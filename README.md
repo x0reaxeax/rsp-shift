@@ -1,5 +1,7 @@
 # rsp-shift
 
+## NO ASLR & NO-PIE
+
 Demonstration of willy nilly changing stack pointer with C.  
 Mind that the `__asm__` block in `function()` doesn't play any significant part here and is only used to ease the demo.
 
@@ -10,6 +12,16 @@ Mind that the `__asm__` block in `function()` doesn't play any significant part 
 ### Compiling:
 **Test:** `gcc -no-pie -O2 rsp-test.c -o test`  (works with gcc and clang)  
 **Demo:** `clang -no-pie stack.c`               (clang only)
+
+```
+$ ./a.out
+supa hax c sp shift test
+```
+
+## ASLR & PIE
+`aslr-pie.c` is a demo of stack shift with ASLR enabled and PIE executable.  
+This specific example works with GCC only. clang could be used, but it would require editing the offsets.  
+`gcc aslr-pie.c`
 
 ```
 $ ./a.out
